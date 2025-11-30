@@ -28,10 +28,9 @@ const Navbar = () => {
       if (!settingRef.current) return;
 
       gsap.to(settingRef.current, {
-        duration: 0.6,
-        opacity: isOpen ? 1 : 0,
+        duration: 0.3,
         pointerEvents: isOpen ? "all" : "none",
-        ease: "elastic.out(1, 0.75)",
+        ease: "power3.out",
         width: isOpen ? "auto" : 0,
       });
     },
@@ -54,14 +53,14 @@ const Navbar = () => {
       <div className="flex items-center gap-3">
         <div
           ref={settingRef}
-          className="opacity-0 pointer-events-none flex items-center gap-5 bg-primary-800 px-5 py-2 rounded-full text-primary-100 overflow-hidden"
+          className="opacity-100 pointer-events-none flex items-center justify-between bg-primary-800 rounded-2xl text-primary-100 overflow-hidden divide-primary-100 flex-nowrap"
         >
           {links.map((item) => (
             <Link
               onClick={toggleMenu}
               href={item.href}
               key={item.label}
-              className="relative overflow-hidden after:content-[''] after:absolute after:w-full after:h-px after:bg-primary-100 after:bottom-[10%] after:rounded-2xl after:left-[-50%] hover:after:left-1/2 after:transform after:-translate-x-1/2 after:transition-all after:duration-300"
+              className="hover:text-primary-300 transition-all duration-200 px-4 py-2 cursor-pointer select-none"
             >
               {item.label}
             </Link>
