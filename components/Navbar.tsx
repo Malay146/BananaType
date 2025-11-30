@@ -45,6 +45,7 @@ const Navbar = () => {
     { href: "#", label: "Leaderboard" },
     { href: "#", label: "Multiplayer" },
   ];
+  
   return (
     <div className="w-full md:max-w-6xl mx-auto flex items-center justify-between p-6">
       <Link href="/">
