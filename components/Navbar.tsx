@@ -53,7 +53,7 @@ const Navbar = () => {
       <div className="flex items-center gap-3">
         <div
           ref={settingRef}
-          className="opacity-100 pointer-events-none flex items-center justify-between bg-primary-800 rounded-2xl text-primary-100 overflow-hidden divide-primary-100 flex-nowrap"
+          className="pointer-events-none flex items-center justify-between bg-primary-800 rounded-2xl text-primary-100 overflow-hidden flex-nowrap"
         >
           {links.map((item) => (
             <Link

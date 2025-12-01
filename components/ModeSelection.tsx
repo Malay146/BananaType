@@ -1,16 +1,21 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
-const Mode = () => {
-  const [modeToggle, setModeToggle] = React.useState(false);
-  const [setsToggle, setSetsToggle] = React.useState(false);
-  const [keyboardToggle, setKeyboardToggle] = React.useState(false);
+const Mode = ({setTimeLeft } : {setTimeLeft:React.Dispatch<React.SetStateAction<number>>}) => {
+  const [modeToggle, setModeToggle] = useState<boolean>(false);
+  const [setsToggle, setSetsToggle] = useState<boolean>(false);
+  const [keyboardToggle, setKeyboardToggle] = useState<boolean>(false);
+  
+  // NEW: selected values
+  const [selectedMode, setSelectedMode] = useState<string>("Time");
+  const [selectedSet, setSelectedSet] = useState<string>("15s");
+  const [selectedKeyboard, setSelectedKeyboard] = useState<string>("OFF");
 
   const modes = ["Time", "Words", "Quote", "Code"];
-  const sets = ["15s", "30s", "60s", "120s"];
+  const setOptions = ["15s", "30s", "60s", "120s"];
   const keyboards = ["OFF", "ON"];
 
   const modeInRef = useRef<HTMLDivElement>(null);
@@ -46,14 +51,20 @@ const Mode = () => {
 
   return (
     <div className="flex justify-center items-center mt-20 gap-3">
+      {/* MODE + SETS */}
       <div className="flex items-center gap-1 bg-primary-800 rounded-2xl ">
+        {/* MODE */}
         <div
           onClick={() => setModeToggle(!modeToggle)}
           className="flex justify-center items-center gap-2 pl-4 py-2 cursor-pointer"
         >
-          <h1 className="text-primary-100 font-medium cursor-pointer select-none">
-            Mode
-          </h1>
+          <h1 className="text-primary-100 font-medium select-none">Mode</h1>
+
+          {/* NEW → SELECTED MODE */}
+          <span className="text-primary-200 text-sm select-none">
+            {selectedMode}
+          </span>
+
           <div
             ref={modeInRef}
             className="bg-primary-300 text-primary-800 rounded-lg flex overflow-hidden w-0"
@@ -61,6 +72,9 @@ const Mode = () => {
             {modes.map((mode) => {
               return (
                 <button
+                  onClick={() => {
+                    setSelectedMode(mode);
+                  }}
                   className="hover:text-primary-100 cursor-pointer transition-all duration-150 px-2 py-1"
                   key={mode}
                 >
@@ -70,39 +84,56 @@ const Mode = () => {
             })}
           </div>
         </div>
+
         <span className="w-px h-5 bg-primary-100 rounded-2xl" />
+
+        {/* SETS */}
         <div
           onClick={() => setSetsToggle(!setsToggle)}
           className="flex justify-center items-center gap-2 cursor-pointer px-2 py-2"
         >
-          <h1 className="text-primary-100 font-medium select-none">
-            Sets
-          </h1>
+          <h1 className="text-primary-100 font-medium select-none">Sets</h1>
+
+          {/* NEW → SELECTED SET */}
+          <span className="text-primary-200 text-sm select-none">
+            {selectedSet}
+          </span>
+
           <div
             ref={setInRef}
             className="bg-primary-300 text-primary-800 rounded-lg flex overflow-hidden w-0"
           >
-            {sets.map((set) => {
+            {setOptions.map((option) => {
               return (
                 <button
+                  onClick={() => {
+                    setSelectedSet(option);
+                    setTimeLeft(parseInt(option)); 
+                  }}
                   className="hover:text-primary-100 cursor-pointer transition-all duration-150 px-2 py-1"
-                  key={set}
+                  key={option}
                 >
-                  {set}
+                  {option}
                 </button>
               );
             })}
           </div>
         </div>
       </div>
+
+      {/* KEYBOARD */}
       <div className="flex items-center bg-primary-800 rounded-2xl pl-4 pr-2 py-2">
         <div
           onClick={() => setKeyboardToggle(!keyboardToggle)}
           className="flex justify-center items-center gap-2 cursor-pointer"
         >
-          <h1 className="text-primary-100 font-medium cursor-pointer select-none">
-            Keyboard
-          </h1>
+          <h1 className="text-primary-100 font-medium select-none">Keyboard</h1>
+
+          {/* NEW → SELECTED KEYBOARD */}
+          <span className="text-primary-200 text-sm select-none">
+            {selectedKeyboard}
+          </span>
+
           <div
             ref={keyboardRef}
             className="bg-primary-300 text-primary-800 rounded-lg flex overflow-hidden w-0"
@@ -110,6 +141,9 @@ const Mode = () => {
             {keyboards.map((keyboard) => {
               return (
                 <button
+                  onClick={() => {
+                    setSelectedKeyboard(keyboard);
+                  }}
                   className="hover:text-primary-100 cursor-pointer transition-all duration-150 px-2 py-1"
                   key={keyboard}
                 >
