@@ -47,7 +47,7 @@ const Navbar = () => {
   ];
   
   return (
-    <div className="w-full md:max-w-6xl mx-auto flex items-center justify-between p-6">
+    <div className="w-full h-full px-2 flex items-center justify-between">
       <Link href="/">
         <Logo className="w-50 h-auto text-primary-800 cursor-pointer" />
       </Link>
