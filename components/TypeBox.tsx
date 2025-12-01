@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Mode from "./ModeSelection";
 
 export default function TypeBox() {
   const [isFocused, setIsFocused] = useState(false);
@@ -12,20 +13,18 @@ export default function TypeBox() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-between relative">
+    <div className="w-full h-full flex flex-col items-center justify-between relative select-none">
 
       {/* Language Header */}
-      <div className="w-[850px] min-h-[40px] text-center mb-4 opacity-70 border-2 border-black rounded-lg"></div>
+      <div className="w-[850px] min-h-[40px] text-center border-2 border-black rounded-lg select-none">
+        <Mode />
+      </div>
 
       {/* Words Wrapper */}
       <div
         className="relative w-full h-[200px] overflow-hidden border border-white/10 rounded-lg px-4 py-2"
         onClick={handleFocus}
       >
-        {/* English Label */}
-        <div className="absolute top-2 right-4 text-white/60 text-lg">
-          english
-        </div>
 
         {/* Hidden Input */}
         <textarea
@@ -75,7 +74,7 @@ export default function TypeBox() {
           <div className="flex gap-[2px]"><span>t</span><span>h</span><span>e</span></div>
           <div className="flex gap-[2px]"><span>f</span><span>i</span><span>e</span><span>l</span><span>d</span></div>
         </div>
-      </div> {/* ✅ Proper closing of Words Wrapper */}
+      </div> {/* Proper closing of Words Wrapper */}
 
       {/* Restart Button */}
       <div className="mt-2 opacity-70 hover:opacity-100 cursor-pointer text-2xl">

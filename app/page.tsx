@@ -8,7 +8,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col py-6">
 
       {/* CONTENT GRID (only columns here) */}
-      <div className="grid grid-cols-[0.5fr_0.5fr_1.5fr_20fr_1.5fr_0.5fr_0.5fr] h-20 border-y">
+      <div className="grid grid-cols-[0.5fr_0.5fr_1.5fr_20fr_1.5fr_0.5fr_0.5fr] h-20">
 
         {/* These are ONLY columns */}
         <div className="border border-red-400"></div>
@@ -21,7 +21,7 @@ export default function Home() {
 
       </div>
 
-      {/* 🔴 TOP ROW */}
+      {/* TOP ROW */}
       <div
         className="w-full h-8"
         style={{
@@ -30,8 +30,10 @@ export default function Home() {
         }}
       ></div>
 
+      {/* repeating-linear-gradient(<angle>, <color1> <start1>, <color1> <end1>, <color2> <start2>, <color2> <end2>) */}
+
       {/* CONTENT GRID (only columns here) */}
-      <div className="grid grid-cols-[0.5fr_0.5fr_1.5fr_20fr_1.5fr_0.5fr_0.5fr] flex-grow h-auto min-h-[400px] border-y">
+      <div className="grid grid-cols-[0.5fr_0.5fr_1.5fr_20fr_1.5fr_0.5fr_0.5fr] flex-grow h-auto min-h-[400px]">
 
         {/* These are ONLY columns */}
         <div className="border border-red-400"></div>
@@ -44,7 +46,10 @@ export default function Home() {
 
       </div>
 
-      {/* 🔴 BOTTOM ROW */}
+      {/* flex-grow tells a flex item: “Grow and take up all remaining free space in the flex container.”
+      h-auto: h-auto = height is determined by content. */}
+
+      {/* BOTTOM ROW */}
       <div
         className="w-full h-8"
         style={{
@@ -54,7 +59,7 @@ export default function Home() {
       ></div>
 
       {/* CONTENT GRID (only columns here) */}
-      <div className="grid grid-cols-[0.5fr_0.5fr_1.5fr_20fr_1.5fr_0.5fr_0.5fr] min-h-[90px] border-y">
+      <div className="grid grid-cols-[0.5fr_0.5fr_1.5fr_20fr_1.5fr_0.5fr_0.5fr] min-h-[90px]">
 
         {/* These are ONLY columns */}
         <div className="border border-red-400"></div>
@@ -68,7 +73,5 @@ export default function Home() {
       </div>
 
     </div>
-    //   <Navbar />
-    //   <TypeBox />
   );
 }
